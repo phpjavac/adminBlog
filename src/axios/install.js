@@ -9,7 +9,6 @@ api.$http.interceptors.request.use((res) => {
 });
 api.$http.interceptors.response.use((res) => {
   // loading close...
-  console.log(res)
   return res;
 },
   error => {
