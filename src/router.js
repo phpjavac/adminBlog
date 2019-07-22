@@ -13,8 +13,25 @@ export default new Router({
     },
     {
       path: '/Index',
-      name: 'index',
+      name: '',
       component: () => import(/* webpackChunkName: "index" */ './views/Index.vue'),
-    },
+      children: [
+        {
+          path: '/',
+          name: 'home',
+          component: () => import(/* webpackChunkName: "home" */ './views/home/home.vue'),
+        },
+        {
+          path: '/tag',
+          name: 'tag',
+          component: () => import(/* webpackChunkName: "tag" */ './views/Article/tag.vue'),
+        },
+        {
+          path: '/article',
+          name: 'article',
+          component: () => import(/* webpackChunkName: "article" */ './views/Article/index.vue'),
+        }
+      ]
+    }
   ],
 });
