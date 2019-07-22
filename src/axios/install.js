@@ -12,8 +12,9 @@ api.$http.interceptors.response.use((res) => {
   return res;
 },
   error => {
-    if (error) {
+    if (error&&error.response) {
       // 获取状态码
+      console.dir(error)
       const status = error.response.status;
       const errorText = error.response.data.message
       const errorData = {
@@ -22,6 +23,7 @@ api.$http.interceptors.response.use((res) => {
       }
       return Promise.reject(errorData);
     }
+    return Promise.reject(error);
   });
 
 const install = function apiFun(Vue) {
