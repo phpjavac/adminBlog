@@ -1,14 +1,26 @@
 <template lang="pug">
-el-container
+el-container.index
   el-header
-    el-menu(:default-active="activeIndex",mode="horizontal",:router='true')
-      el-menu-item(index="index") 总览
+    div 123
+  el-aside.left
+    el-menu(:default-active='activeIndex',router)
+      el-menu-item(index="index")
+        i(class="el-icon-menu")
+        span(slot="title")  首页
       el-submenu(index="2")
-        template(slot="title")  文章管理
-        el-menu-item(index="article") 文章
-        el-menu-item(index="tag") 标签
-      el-menu-item(index="3") 系统管理
-    el-main.main
+        template(slot="title")
+          i(class="el-icon-edit")
+          span  文章管理
+        el-menu-item(index='/article') 文章列表
+        el-menu-item(index='/tag') 标签
+        el-menu-item(index='2-3') 评论
+      el-menu-item(index="3")
+        i(class="el-icon-box")
+        span(slot="title")  小工具
+      el-menu-item(index="4")
+        i(class="el-icon-s-tools")
+        span(slot="title")  系统管理
+  el-main.main
       router-view
 </template>
 <script>
@@ -23,8 +35,17 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-.main
-  text-align left
-  width 1366px
-  display inline-block
+.index
+  text-align: left;
+  padding-left 300px
+  .left
+    position fixed
+    left 0
+    height 100vh
+    >>> .el-menu
+      height 100%
+  .main
+    text-align left
+    width 1366px
+    display inline-block
 </style>

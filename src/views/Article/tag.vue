@@ -49,6 +49,7 @@ export default {
           this.tagList = res.data.list;
         })
         .catch(error => {
+          console.log(error)
           this.$message.error(error.errorText);
         });
     }
