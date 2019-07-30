@@ -21,6 +21,7 @@ export default {
         .then(res => {
           if (res.data.code === 0) {
             localStorage.token = res.data.token;
+            localStorage.code = this.code
             this.$router.push("/index");
           }
         })

@@ -24,13 +24,21 @@ class Api {
   addTag(data) {
     return this.$http.post('./api/article/addtag', data);
   }
-  getTagList(){
+  getTagList() {
     return this.$http.get('./api/article/taglist');
-    
+
   }
-  deleteTag(id){
+  deleteTag(id) {
     return this.$http.delete(`./api/article/deletetag/${id}`);
-    
+  }
+  createArticle(data) {
+    return this.$http.post('./api/article/create', data);
+  }
+  getArticleList(data) {
+    {
+      return this.$http.get(`./api/article/list/${data.page}/${data.pageSize}`);
+    }
+
   }
 }
 

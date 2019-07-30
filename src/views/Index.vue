@@ -11,7 +11,8 @@ el-container.index
         template(slot="title")
           i(class="el-icon-edit")
           span  文章管理
-        el-menu-item(index='/article') 文章列表
+        el-menu-item(index='/article/create') 新建文章
+        el-menu-item(index='/article/list') 文章列表
         el-menu-item(index='/tag') 标签
         el-menu-item(index='2-3') 评论
       el-menu-item(index="3")
