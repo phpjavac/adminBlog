@@ -27,9 +27,14 @@ export default new Router({
           component: () => import(/* webpackChunkName: "tag" */ './views/Article/tag.vue'),
         },
         {
-          path: '/article',
+          path: '/article/list',
           name: 'article',
           component: () => import(/* webpackChunkName: "article" */ './views/Article/index.vue'),
+        },
+        {
+          path: '/article/create',
+          name: 'create',
+          component: () => import(/* webpackChunkName: "article" */ './views/Article/create.vue'),
         }
       ]
     }

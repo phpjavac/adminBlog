@@ -1,5 +1,5 @@
 import Api from './api';
-
+import router from '@/router'
 const api = new Api();
 // 状态码错误信息
 api.$http.interceptors.request.use((res) => {
@@ -14,12 +14,16 @@ api.$http.interceptors.response.use((res) => {
   error => {
     if (error&&error.response) {
       // 获取状态码
-      console.dir(error)
       const status = error.response.status;
       const errorText = error.response.data.message
       const errorData = {
         status,
         errorText
+      }
+      if(status === 401){
+          localStorage.clear();
+          sessionStorage.clear()
+          router.push("/")
       }
       return Promise.reject(errorData);
     }
