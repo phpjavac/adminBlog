@@ -12,6 +12,9 @@ class Api {
     console.log(this);
   }
 
+  register(data) {
+    return this.$http.post('./api/user/register', data);
+  }
   /** 登录接口 */
   login(data) {
     return this.$http.post('./api/user/login', data);
@@ -36,7 +39,9 @@ class Api {
   }
   getArticleList(data) {
     {
-      return this.$http.get(`./api/article/list/${data.page}/${data.pageSize}`);
+      return this.$http.get(`./api/article/list`, {
+        params: { page: data.page, pageSize: data.pageSize }
+      });
     }
 
   }

@@ -6,7 +6,7 @@ div
             el-input(v-model="article.title",placeholder="TITLE")
         el-form-item(label="文章标签")
             el-select(v-model="article.tag",placeholder="TAG",multiple)
-                el-option(v-for='item in tagList',:value="item._id",:label="item.name",:key="item._id")
+                el-option(v-for='item in tagList',:value="item.name",:label="item.name",:key="item._id")
         el-form-item(label="文章简介")
             el-input(v-model="article.summary",placeholder="SUMMARY",type="textarea")
         el-form-item(label="")
