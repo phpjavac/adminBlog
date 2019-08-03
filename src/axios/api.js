@@ -12,9 +12,12 @@ class Api {
     console.log(this);
   }
 
+<<<<<<< HEAD
   register(data) {
     return this.$http.post('./api/user/register', data);
   }
+=======
+>>>>>>> 7186a5a1de4f8218c97e41b805d32481b4522198
   /** 登录接口 */
   login(data) {
     return this.$http.post('./api/user/login', data);
@@ -39,9 +42,13 @@ class Api {
   }
   getArticleList(data) {
     {
+<<<<<<< HEAD
       return this.$http.get(`./api/article/list`, {
         params: { page: data.page, pageSize: data.pageSize }
       });
+=======
+      return this.$http.get(`./api/article/list/${data.page}/${data.pageSize}`);
+>>>>>>> 7186a5a1de4f8218c97e41b805d32481b4522198
     }
 
   }
