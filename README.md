@@ -1,29 +1,16 @@
-# blogadmin
+# VUE-ADMIN-BLOG
 
-## Project setup
-```
-yarn install
-```
+**说明**
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+https://github.com/phpjavac/nuxt-blog 的后端管理系统
+施工中..
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+# 使用
 
-### Run your tests
-```
-yarn run test
-```
+> git clone https://github.com/phpjavac/adminBlog.git
 
-### Lints and fixes files
-```
-yarn run lint
-```
+> cd adminBlog
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> yarn
+
+> yarn server

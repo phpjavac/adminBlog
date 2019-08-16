@@ -4,11 +4,12 @@ div
     div
         el-table(:data="ArticleData")
             el-table-column(type="selection")
-            el-table-column(v-for="item in table",:label="item.name",:prop="item.value")
+            el-table-column(v-for="item in table",:label="item.name",:prop="item.value",:key="item.value")
             el-table-column(label="操作")
                 template(slot-scope="scope")
                     el-button(type="text")   预览
-                    el-button(type="text")   编辑
+                    el-button(type="text",@click='edit(scope.row._id)')   编辑
+                    el-button(type="text",@click='fun_delete(scope.row._id)')   删除
         el-pagination(:total="page.total",:page-size="pageData.pageSize",layout="prev, pager, next",@next-click="pageChange",@prev-click="pageChange")
 </template>
 <script>
@@ -30,6 +31,16 @@ export default {
     };
   },
   methods: {
+    edit(id) {
+      console.log(id);
+      this.$router.push(`/article/edit/${id}`);
+    },
+    fun_delete(id) {
+      this.$http.deleteArticle(id).then(() => {
+        this.$message.success("删除成功");
+        
+      });
+    },
     pageChange(value) {
       this.pageData.page = value;
       this.query();

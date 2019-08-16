@@ -7,17 +7,13 @@ class Api {
       Authorization: `Bearer ${localStorage.token}`,
     },
   });
-  axios = axios.interceptors.response
   catch() {
     console.log(this);
   }
 
-<<<<<<< HEAD
   register(data) {
     return this.$http.post('./api/user/register', data);
   }
-=======
->>>>>>> 7186a5a1de4f8218c97e41b805d32481b4522198
   /** 登录接口 */
   login(data) {
     return this.$http.post('./api/user/login', data);
@@ -42,15 +38,25 @@ class Api {
   }
   getArticleList(data) {
     {
-<<<<<<< HEAD
       return this.$http.get(`./api/article/list`, {
         params: { page: data.page, pageSize: data.pageSize }
       });
-=======
-      return this.$http.get(`./api/article/list/${data.page}/${data.pageSize}`);
->>>>>>> 7186a5a1de4f8218c97e41b805d32481b4522198
     }
 
+  }
+  // 获取文章详情
+  getArticle(id) {
+    {
+      return this.$http.get(`./api/article`, {
+        params: { id: id }
+      });
+    }
+
+  }
+  deleteArticle(id) {
+    return this.$http.delete(`./api/article`, {
+      params: { id: id }
+    });
   }
 }
 

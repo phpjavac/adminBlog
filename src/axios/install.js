@@ -12,20 +12,44 @@ api.$http.interceptors.response.use((res) => {
   return res;
 },
   error => {
-    if (error&&error.response) {
-      // 获取状态码
-      const status = error.response.status;
-      const errorText = error.response.data.message
-      const errorData = {
-        status,
-        errorText
+    if (error) {
+      if (error.response) {
+
+        // 获取状态码
+        const status = error.response.status;
+        const errorText = error.response.data.message
+        const errorData = {
+          status,
+          errorText
+        }
+        switch (status) {
+          case 401:
+            localStorage.clear();
+            sessionStorage.clear()
+            router.push("/")
+            break;
+          case 404:
+            console.log("淡定, 只是404而已")
+            break;
+          case 400:
+            console.log("未知错误")
+            break;
+          case 500:
+            console.log("服务器内部错误")
+            break;
+          default:
+            localStorage.clear();
+            sessionStorage.clear()
+            router.push("/")
+            break;
+        }
+
+        return Promise.reject(errorData);
+      } else {
+        localStorage.clear();
+        sessionStorage.clear()
+        router.push("/")
       }
-      if(status === 401){
-          localStorage.clear();
-          sessionStorage.clear()
-          router.push("/")
-      }
-      return Promise.reject(errorData);
     }
     return Promise.reject(error);
   });

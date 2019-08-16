@@ -1,20 +1,17 @@
 <template lang="pug">
 div
-    div 新建文章
+    div {{$route.name ==="articleEdit"?'编辑文章':'新建文章'}}
     el-form(ref="form")
         el-form-item(label="文章标题")
             el-input(v-model="article.title",placeholder="TITLE")
         el-form-item(label="文章标签")
             el-select(v-model="article.tag",placeholder="TAG",multiple)
-<<<<<<< HEAD
                 el-option(v-for='item in tagList',:value="item.name",:label="item.name",:key="item._id")
-=======
-                el-option(v-for='item in tagList',:value="item._id",:label="item.name",:key="item._id")
->>>>>>> 7186a5a1de4f8218c97e41b805d32481b4522198
         el-form-item(label="文章简介")
             el-input(v-model="article.summary",placeholder="SUMMARY",type="textarea")
         el-form-item(label="")
-            quill-editor(:options="establishOption",v-model="article.content")
+            //- quill-editor(:options="establishOption",v-model="article.content")
+            mavon-editor(v-model="article.content",ref="mEditor")
         el-form-item(label="封面图片")
             el-upload(action="https://httpbin.org/post",drag,:on-success="upLoadSuccess")
                 i.el-icon-upload
@@ -61,6 +58,10 @@ export default {
         return this.$message.error("请填写完整！");
       }
       this.article.code = localStorage.code
+
+      
+      const data = this.article
+      data.content = this.$refs.mEditor.d_render
       this.$http.createArticle(this.article).then(res=>{
           console.log(res)
       }).catch(error=>{
@@ -73,8 +74,8 @@ export default {
     updateData(value) {
       console.log(value);
     },
-    query() {
-      this.$http
+  async  query() {
+    await  this.$http
         .getTagList()
         .then(res => {
           this.tagList = res.data.list;
@@ -82,6 +83,12 @@ export default {
         .catch(error => {
           this.$message.error(error.errorText);
         });
+        if(this.$route.name!== "articleEdit"){
+          return
+        }
+        this.$http.getArticle(this.$route.params.id).then(res=>{
+          this.article = res.data.data
+        })
     }
   },
   created() {

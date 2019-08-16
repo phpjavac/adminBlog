@@ -35,6 +35,11 @@ export default new Router({
           path: '/article/create',
           name: 'create',
           component: () => import(/* webpackChunkName: "article" */ './views/Article/create.vue'),
+        },
+        {
+          path: '/article/edit/:id',
+          name: 'articleEdit',
+          component: () => import(/* webpackChunkName: "article" */ './views/Article/create.vue'),
         }
       ]
     }
