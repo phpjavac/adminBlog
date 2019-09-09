@@ -7,7 +7,7 @@ class Api {
       Authorization: `Bearer ${localStorage.token}`,
     },
   });
-  catch() {
+  catch () {
     console.log(this);
   }
 
@@ -39,7 +39,10 @@ class Api {
   getArticleList(data) {
     {
       return this.$http.get(`./api/article/list`, {
-        params: { page: data.page, pageSize: data.pageSize }
+        params: {
+          page: data.page,
+          pageSize: data.pageSize
+        }
       });
     }
 
@@ -48,16 +51,32 @@ class Api {
   getArticle(id) {
     {
       return this.$http.get(`./api/article`, {
-        params: { id: id }
+        params: {
+          id: id
+        }
       });
     }
 
   }
   deleteArticle(id) {
     return this.$http.delete(`./api/article`, {
-      params: { id: id }
+      params: {
+        id: id
+      }
     });
   }
+  // 获取数据库里的工时
+  getworkingHours() {
+    return this.$http.get(`./api/tool/getworkingHours`);
+  }
+  // 同步数据库里的工时
+  synchronizationWorkingHours() {
+    return this.$http.get(`./api/tool/workingday`);
+  }
+  pulSynchronizationWorkingHours(data) {
+    return this.$http.post("./api/tool/synchronizationWorkingHours", data);
+  }
+
 }
 
 export default Api;

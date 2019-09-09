@@ -15,9 +15,11 @@ el-container.index
         el-menu-item(index='/article/list') 文章列表
         el-menu-item(index='/tag') 标签
         el-menu-item(index='2-3') 评论
-      el-menu-item(index="3")
-        i(class="el-icon-box")
-        span(slot="title")  小工具
+      el-submenu(index="3")
+        template(slot="title")
+          i(class="el-icon-box")
+          span  小工具
+        el-menu-item(index="/tool/wh")  工时管理
       el-menu-item(index="4")
         i(class="el-icon-s-tools")
         span(slot="title")  系统管理

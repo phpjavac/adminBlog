@@ -40,7 +40,12 @@ export default new Router({
           path: '/article/edit/:id',
           name: 'articleEdit',
           component: () => import(/* webpackChunkName: "article" */ './views/Article/create.vue'),
-        }
+        },
+        {
+          path: '/tool/wh',
+          name: 'toolWh',
+          component: () => import(/* webpackChunkName: "tool" */ './views/tool/workingHours.vue'),
+        },
       ]
     }
   ],
