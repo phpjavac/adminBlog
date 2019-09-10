@@ -21,16 +21,7 @@ div
             el-button(type="primary",@click="onSubmit") 保存
 </template>
 <script>
-import { quillEditor } from "vue-quill-editor";
-import * as Quill from "quill"; // 引入编辑器
-const Font = Quill.import("formats/font");
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
-Quill.register(Font, true);
 export default {
-  components: {
-    "quill-editor": quillEditor
-  },
   data() {
     return {
       // 富文本编辑器配置
@@ -62,7 +53,7 @@ export default {
       
       const data = this.article
       data.content = this.$refs.mEditor.d_render
-      this.$http.createArticle(this.article).then(res=>{
+      this.$http.createArticle(data).then(res=>{
           console.log(res)
       }).catch(error=>{
           console.log(error)
