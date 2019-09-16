@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class Api {
   $http = axios.create({
-    baseURL: '',
+    baseURL: '//api.aiisx.com',
     headers: {
       Authorization: `Bearer ${localStorage.token}`,
     },

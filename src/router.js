@@ -47,6 +47,11 @@ export default new Router({
           component: () => import(/* webpackChunkName: "tool" */ './views/tool/workingHours.vue'),
         },
       ]
-    }
+    },
+    {
+      path: '/backups',
+      name: 'backups',
+      component: () => import(/* webpackChunkName: "backups" */ './views/backups.vue'),
+    },
   ],
 });

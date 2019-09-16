@@ -1,6 +1,6 @@
 module.exports = {
   lintOnSave: false,
   devServer: {
-    proxy: "http://localhost:3003"
+    proxy: "https://api.aiisx.com"
   }
 }
